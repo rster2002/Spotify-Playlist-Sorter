@@ -1,0 +1,15 @@
+@import "dp";
+
+@mixin corner-tokens {
+    --md-sys-shape-corner-none: #{dp(0)};
+    --md-sys-shape-corner-extra-small: #{dp(4)};
+    --md-sys-shape-corner-extra-small-top: #{dp(4)} #{dp(4)} #{dp(0)} #{dp(0)};
+    --md-sys-shape-corner-small: #{dp(8)};
+    --md-sys-shape-corner-medium: #{dp(12)};
+    --md-sys-shape-corner-large: #{dp(16)};
+    --md-sys-shape-corner-large-end: #{dp(0)} #{dp(16)} #{dp(16)} #{dp(0)};
+    --md-sys-shape-corner-large-top: #{dp(16)} #{dp(16)} #{dp(0)} #{dp(0)};
+    --md-sys-shape-corner-extra-large: #{dp(28)};
+    --md-sys-shape-corner-extra-large-top: #{dp(28)} #{dp(28)} #{dp(0)} #{dp(0)};
+    --md-sys-shape-corner-full: 100000px;
+}

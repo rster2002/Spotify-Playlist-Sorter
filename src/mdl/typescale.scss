@@ -1,0 +1,13 @@
+@mixin create-typescale-variables($typescale-tokens) {
+    @each $name, $value in $typescale-tokens {
+        #{$name}: $value;
+    }
+}
+
+@mixin use-scale($name) {
+    font-family: var(--md-sys-typescale-#{$name}-font);
+    font-size: var(--md-sys-typescale-#{$name}-size);
+    font-weight: var(--md-sys-typescale-#{$name}-weight);
+    line-height: var(--md-sys-typescale-#{$name}-line-height);
+    letter-spacing: var(--md-sys-typescale-#{$name}-tracking);
+}
