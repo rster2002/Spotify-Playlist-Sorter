@@ -1,0 +1,11 @@
+@function state-layer($variable, $opacity) {
+    @return rgb(var(#{$variable}-rgb) / $opacity)
+}
+
+@function hover-state-layer-lighten($variable) {
+    @return state-layer($variable, 0.08);
+}
+
+@function hover-state-layer-darken($variable) {
+    @return state-layer($variable, 0.92);
+}

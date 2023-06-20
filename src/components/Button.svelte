@@ -36,6 +36,7 @@ onMount(() => {
 <style lang="scss">
 @import "../mdl/dp";
 @import "../mdl/typescale";
+@import "../mdl/state-layer";
 
 button {
     height: dp(40);
@@ -82,10 +83,10 @@ button {
     }
 
     &:hover {
-        background-color: rgb(var(--md-sys-color-primary-rgb) / 0.92);
+        background-color: hover-state-layer-darken(--md-sys-color-primary);
 
         &.outline, &.text {
-            background-color: rgb(var(--md-sys-color-primary-rgb) / 0.08)
+            background-color: hover-state-layer-lighten(--md-sys-color-primary);
         }
     }
 
