@@ -6,6 +6,8 @@
           {#if selectedPlaylist === null}
             <h1>Select playlist</h1>
 
+            <Checkbox />
+
             <div class="playlists">
               {#each playlists as playlist}
                 <ListItem
@@ -76,6 +78,7 @@ import MenuRightIcon from "@/components/icons/MenuRightIcon.svelte";
 import ArrowBackIcon from "@/components/icons/ArrowBackIcon.svelte";
 import HSpace from "@/components/layouts/HSpace.svelte";
 import VSpace from "@/components/layouts/VSpace.svelte";
+import Checkbox from "@/components/Checkbox.svelte";
 
 // Data
 const spotifyUser = new SpotifyUser(
@@ -126,6 +129,7 @@ const promise = refresh();
 @import "mdl/color";
 @import "mdl/typescale";
 @import "mdl/corner";
+@import "mdl/easing";
 
 :global(html), :global(body) {
     height: 100%;
@@ -142,6 +146,7 @@ main {
     @include create-typescale-variables($typescale-tokens);
     @include light-theme;
     @include corner-tokens;
+    @include easing-tokens;
 
     height: 100%;
     width: 100%;
