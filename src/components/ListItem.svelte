@@ -15,9 +15,9 @@
     </div>
   </div>
 
-  {#if $$slots.tailingIcon}
-    <div class="tailingIcon">
-      <slot name="tailingIcon" />
+  {#if $$slots.tailing}
+    <div class="tailing">
+      <slot name="tailing" />
     </div>
   {/if}
 </div>
@@ -35,6 +35,8 @@ export var clickable: boolean = false;
 @import "../mdl/state-layer";
 
 .listItem {
+    min-height: dp(56);
+
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -51,6 +53,9 @@ export var clickable: boolean = false;
         .image :global(img) {
             height: dp(56);
             width: dp(56);
+
+            display: grid;
+            place-items: center;
         }
 
         .text {
@@ -72,7 +77,7 @@ export var clickable: boolean = false;
         }
     }
 
-    .tailingIcon {
+    .tailing {
         display: grid;
         place-items: center;
 

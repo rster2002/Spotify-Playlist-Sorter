@@ -3,6 +3,7 @@
   {outline}
   {text}
   {icon}
+  {disabled}
 >
   {#if !loading}
     <slot />
@@ -21,6 +22,7 @@ export var asyncClick: <T>() => Promise<T>;
 export var outline = false;
 export var text = false;
 export var icon = false;
+export var disabled = false;
 
 // Data
 let loading = false;

@@ -8,6 +8,8 @@ div {
     display: flex;
     flex-direction: column;
     gap: 1em;
+
+    background-color: inherit;
 }
 
 </style>

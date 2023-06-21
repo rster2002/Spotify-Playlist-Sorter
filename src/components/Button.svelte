@@ -49,7 +49,7 @@ button {
     border: 0;
     box-sizing: border-box;
     cursor: pointer;
-    transition: all 150ms var(--standard-easing);
+    transition: var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard) all;
     transition-property: color, background-color;
     display: flex;
     flex-direction: row;
@@ -82,7 +82,18 @@ button {
         color: var(--md-sys-color-primary);
     }
 
-    &:hover {
+    &:disabled {
+        background-color: rgb(var(--md-sys-color-on-surface-rgb) / 0.12);
+        color: rgb(var(--md-sys-color-on-surface-rgb) / 0.33);
+        cursor: default;
+
+        &.text {
+            color: rgb(var(--md-sys-color-on-surface-rgb) / 0.38);
+            background-color: transparent;
+        }
+    }
+
+    &:hover:not(:disabled) {
         background-color: hover-state-layer-darken(--md-sys-color-primary);
 
         &.outline, &.text {

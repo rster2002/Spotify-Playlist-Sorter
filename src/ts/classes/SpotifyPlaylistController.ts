@@ -1,4 +1,6 @@
 import type SpotifyUser from "@/ts/classes/SpotifyUser";
+import InOrderSorter from "@/ts/classes/sorters/InOrderSorter";
+import type SpotifyListResponse from "@/ts/interfaces/SpotifyListResponse";
 
 export interface SpotifyPlaylistResponse {
     collaborative: boolean,
@@ -22,14 +24,9 @@ export interface SpotifyPlaylistResponse {
     snapshot_id: string,
 }
 
-interface SpotifyListResponse<T> {
-    href: string;
-    limit: number;
-    next: string;
-    offset: number;
-    previous: string;
-    total: number;
-    items: T[];
+export enum SortMethod {
+    IN_ORDER = "inOrder",
+    GROUPS = "groups"
 }
 
 export default class SpotifyPlaylistController {
@@ -56,5 +53,16 @@ export default class SpotifyPlaylistController {
         this.lastResponse = response;
 
         return response.items;
+    }
+
+    done() {
+        return this.lastResponse.next === null;
+    }
+
+    async sort(playlist: SpotifyPlaylistResponse, method: SortMethod, seed: number = 123) {
+        if (method === SortMethod.IN_ORDER) {
+            let sorter = new InOrderSorter(this.user, playlist, seed);
+            await sorter.sort();
+        }
     }
 }
