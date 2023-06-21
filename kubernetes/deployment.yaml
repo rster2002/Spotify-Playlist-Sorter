@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: code-server-deployment
+  namespace: playlist-sorter
+  labels:
+    playlist-sorter-service: playlist-sorter
+spec:
+  selector:
+    matchLabels:
+      octopusexport: OctopusExport
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        playlist-sorter-service: playlist-sorter
+        octopusexport: OctopusExport
+    spec:
+      hostNetwork: false
+      containers:
+        - name: code-server
+          image: 'docker.jumpdrive.dev/playlist-sorter:0.1'
+          ports:
+            - name: nginx
+              containerPort: 80
+              protocol: TCP
+      imagePullSecrets:
+        - name: playlist-sorter-secret
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app
+                      operator: In
+                      values:
+                        - web
+                topologyKey: kubernetes.io/hostname

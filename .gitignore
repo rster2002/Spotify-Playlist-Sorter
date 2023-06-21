@@ -133,3 +133,6 @@ dist
 # Temp files
 temp.*
 *.temp.*
+
+kubernetes/secret.yaml
+./public/build
